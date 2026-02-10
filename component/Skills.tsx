@@ -3,10 +3,10 @@ import Image from "next/image";
 export default function BioSection() {
   const skills = [
     { name: "Design", value: 85 },
-    { name: "React.Js", value: 90 },
-    { name: "Node.js", value: 80 },
+    { name: "React.js", value: 95 },
+    { name: "Node.js", value: 85 },
     { name: "Next.js", value: 88 },
-    { name: "Github", value: 80 },
+    { name: "GitHub", value: 80 },
   ];
 
   return (
@@ -14,8 +14,8 @@ export default function BioSection() {
       <div className='grid grid-cols-1 lg:grid-cols-2 gap-16 items-start'>
         <div className='relative w-full aspect-4/5 lg:aspect-auto lg:h-175'>
           <Image
-            src='/skills.jpg'
-            alt='James Anderson Portrait'
+            src='/skill.jpg'
+            alt='Full Stack Developer Portrait'
             fill
             className='object-cover'
           />
@@ -37,15 +37,29 @@ export default function BioSection() {
 
           <div className='space-y-6 text-gray-500 leading-relaxed mb-12 max-w-xl'>
             <p>
-              Far far away, behind the word mountains, far from the countries
-              Vokalia and Consonantia, there live the blind texts. Separated
-              they live in Bookmarksgrove right at the coast of the Semantics, a
-              large language ocean.
+              I’m a passionate{" "}
+              <span className='text-gray-800 font-medium'>
+                Full Stack Web Developer
+              </span>{" "}
+              with experience in building modern, scalable, and responsive web
+              applications. I work with
+              <span className='text-gray-800 font-medium'>
+                {" "}
+                React.js and Next.js
+              </span>{" "}
+              on the frontend to create smooth and user-friendly interfaces.
             </p>
             <p>
-              A small river named Duden flows by their place and supplies it
-              with the necessary regelialia. It is a paradisematic country, in
-              which roasted parts of sentences fly into your mouth.
+              On the backend, I use{" "}
+              <span className='text-gray-800 font-medium'>Node.js</span> to
+              manage server-side logic and APIs. I also have strong command over{" "}
+              <span className='text-gray-800 font-medium'>GitHub</span> for
+              version control and project management.
+            </p>
+            <p>
+              I enjoy solving problems, writing clean code, and continuously
+              learning new technologies to deliver complete end-to-end web
+              solutions.
             </p>
           </div>
 
@@ -63,14 +77,13 @@ export default function BioSection() {
             <button className='px-8 py-3 bg-[#96bb7c] text-white text-xs font-bold tracking-widest rounded-full hover:bg-[#85a86a] transition-colors'>
               HIRE ME
             </button>
-            <button>
-              <a
-                href='/ansa.pdf'
-                download='my resume'
-                className='px-8 py-3 bg-[#6c757d] text-white text-xs font-bold tracking-widest rounded-full hover:bg-[#5a6268] transition-colors uppercase cursor-pointer'>
-                Download CV
-              </a>
-            </button>
+
+            <a
+              href='/ansa.pdf'
+              download='my-resume'
+              className='px-8 py-3 bg-[#6c757d] text-white text-xs font-bold tracking-widest rounded-full hover:bg-[#5a6268] transition-colors uppercase cursor-pointer'>
+              Download CV
+            </a>
           </div>
         </div>
       </div>

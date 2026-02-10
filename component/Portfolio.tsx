@@ -1,9 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
-const portfolioItems = [
+type PortfolioItem = {
+  id: number;
+  title: string;
+  category: string;
+  image: string;
+  size: string;
+};
+
+const portfolioItems: PortfolioItem[] = [
   {
     id: 1,
     title: "Card Vol. 3",
@@ -29,7 +37,7 @@ const portfolioItems = [
     id: 4,
     title: "Black House",
     category: "Photography",
-    image: "/p4.jpg",
+    image: "/pp4.jpg",
     size: "h-[500px]",
   },
   {
@@ -58,29 +66,56 @@ const portfolioItems = [
 const categories = ["All", "Packaging", "Mockup", "Typography", "Photography"];
 
 export default function PortfolioSection() {
-  const [filter, setFilter] = useState("All");
+  const [filter, setFilter] = useState<string>("All");
+  const [visible, setVisible] = useState<boolean>(false);
 
   const filteredItems =
     filter === "All"
       ? portfolioItems
       : portfolioItems.filter((item) => item.category === filter);
 
+  // Scroll animation using IntersectionObserver
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+
+    const element = document.getElementById("portfolio-grid");
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className='py-20 px-4 max-w-7xl mx-auto'>
+      {/* Heading */}
       <div className='text-center mb-12'>
-        <h2 className='text-4xl font-semibold text-gray-900 mb-8'>
-          My Portfolio
+        <h2 className='text-4xl font-semibold text-gray-900 mb-2'>
+          Selected Works
         </h2>
+        <p className='text-gray-500 text-sm md:text-base'>
+          A showcase of projects that highlight design, creativity, and
+          attention to detail.
+        </p>
 
-        <div className='flex flex-wrap justify-center gap-6 md:gap-10'>
+        {/* Category Filters */}
+        <div className='flex flex-wrap justify-center gap-4 md:gap-6 mt-6'>
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`text-sm font-medium transition-all duration-300 ${
+              className={`text-sm font-medium px-4 py-2 rounded-full border transition-all duration-300 ${
                 filter === cat
-                  ? "text-[#96bb7c]"
-                  : "text-gray-400 hover:text-gray-600"
+                  ? "bg-[#96bb7c]/20 border-[#96bb7c] text-[#96bb7c]"
+                  : "border-gray-300 text-gray-600 hover:border-gray-400 hover:text-gray-900"
               }`}>
               {cat}
             </button>
@@ -88,25 +123,32 @@ export default function PortfolioSection() {
         </div>
       </div>
 
-      <div className='columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6'>
-        {filteredItems.map((item) => (
+      {/* Portfolio Grid */}
+      <div
+        id='portfolio-grid'
+        className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
+        {filteredItems.map((item, index) => (
           <div
             key={item.id}
-            className='relative group overflow-hidden break-inside-avoid rounded-sm bg-gray-100'>
+            className={`relative group overflow-hidden rounded-xl shadow-md hover:shadow-xl transition duration-300 transform
+              ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
+            style={{ transitionDelay: `${index * 150}ms` }}>
+            {/* Image */}
             <div className={`relative w-full ${item.size}`}>
               <Image
                 src={item.image}
                 alt={item.title}
                 fill
-                className='object-cover transition-transform duration-500 group-hover:scale-110'
+                className='object-cover transition-transform duration-500 group-hover:scale-105 group-hover:brightness-110'
               />
             </div>
 
-            <div className='absolute inset-0 bg-black/70 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
-              <h3 className='text-white text-xl font-medium mb-1'>
+            {/* Overlay */}
+            <div className='absolute inset-0 bg-black/60 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300'>
+              <h3 className='text-white text-lg md:text-xl font-semibold mb-1'>
                 {item.title}
               </h3>
-              <p className='text-[#96bb7c] text-sm font-light'>
+              <p className='text-[#96bb7c] text-sm md:text-base font-light'>
                 {item.category}
               </p>
             </div>

@@ -45,7 +45,7 @@ const ResumeSection = () => {
         <div className='lg:col-span-4 sticky top-10'>
           <div className='relative aspect-3/4 w-full overflow-hidden rounded-xl shadow-lg hover:scale-105 transition-transform duration-300'>
             <Image
-              src='/'
+              src='/ansa asghar.jpg'
               alt='Ansa Asghar'
               fill
               className='object-cover'
@@ -53,9 +53,7 @@ const ResumeSection = () => {
           </div>
         </div>
 
-        {/* Resume Details */}
         <div className='lg:col-span-8 space-y-12'>
-          {/* Work Experience */}
           <div>
             <h3 className='text-2xl font-semibold text-gray-800 mb-8 border-b pb-2 border-gray-200'>
               Work Experience

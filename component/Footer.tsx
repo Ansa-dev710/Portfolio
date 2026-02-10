@@ -92,7 +92,7 @@ const Footer = () => {
                 <a
                   href='#'
                   className='hover:text-[#96bb7c]'>
-                  eCommerce
+                  E-Commerce
                 </a>
               </li>
               <li>
@@ -106,7 +106,7 @@ const Footer = () => {
                 <a
                   href='#'
                   className='hover:text-[#96bb7c]'>
-                  Frontend Dev
+                  Fullstack web Dev
                 </a>
               </li>
             </ul>
