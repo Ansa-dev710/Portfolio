@@ -1,10 +1,12 @@
 @import "tailwindcss";
 
+/* Theme Variables */
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
+/* Tailwind Theme Mapping */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -19,8 +21,62 @@
   }
 }
 
+/* Global Styles */
+html {
+  scroll-behavior: smooth; /* Smooth scroll animation */
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Hero Gradient Animation */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+}
+
+/* Glass Effect for Navbar or Cards */
+.glass {
+  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* Navbar Background Animation (Light Mode Parallax) */
+@keyframes backgroundScroll {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 50% 50%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+.animate-backgroundScroll {
+  animation: backgroundScroll 30s linear infinite;
+  background-size: 200% 200%;
+}
+
+/* Utility for Hero / Section Images */
+.bg-cover-center {
+  background-size: cover;
+  background-position: center;
 }

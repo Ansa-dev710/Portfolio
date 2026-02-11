@@ -1,6 +1,31 @@
+"use client";
+
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
 import { MapPin, Phone, Mail, Globe } from "lucide-react";
 
 const ContactSection = () => {
+  const form = useRef<HTMLFormElement>(null);
+
+  const sendEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.current) return;
+
+    emailjs
+      .sendForm(
+        "YOUR_SERVICE_ID",
+        "YOUR_TEMPLATE_ID",
+        form.current,
+        "YOUR_PUBLIC_KEY",
+      )
+      .then(
+        () => alert("Message sent successfully!"),
+        () => alert("Failed to send message."),
+      );
+
+    form.current.reset();
+  };
+
   return (
     <section className='min-h-screen flex items-center justify-center py-24 px-6 bg-white'>
       <div className='max-w-6xl w-full mx-auto'>
@@ -9,8 +34,12 @@ const ContactSection = () => {
         </h2>
 
         <div className='grid grid-cols-1 lg:grid-cols-12 gap-16 items-center'>
+          {/* Form */}
           <div className='lg:col-span-7'>
-            <form className='space-y-10'>
+            <form
+              ref={form}
+              onSubmit={sendEmail}
+              className='space-y-10'>
               <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
                 <div className='relative border-b border-gray-300 py-2 focus-within:border-[#96bb7c] transition-colors'>
                   <label className='text-xs text-gray-400 uppercase font-bold tracking-widest'>
@@ -18,7 +47,9 @@ const ContactSection = () => {
                   </label>
                   <input
                     type='text'
+                    name='first_name'
                     className='w-full bg-transparent outline-none pt-1 text-gray-800'
+                    required
                   />
                 </div>
                 <div className='relative border-b border-gray-300 py-2 focus-within:border-[#96bb7c] transition-colors'>
@@ -27,7 +58,9 @@ const ContactSection = () => {
                   </label>
                   <input
                     type='text'
+                    name='last_name'
                     className='w-full bg-transparent outline-none pt-1 text-gray-800'
+                    required
                   />
                 </div>
               </div>
@@ -38,7 +71,9 @@ const ContactSection = () => {
                 </label>
                 <input
                   type='email'
+                  name='user_email'
                   className='w-full bg-transparent outline-none pt-1 text-gray-800'
+                  required
                 />
               </div>
 
@@ -47,8 +82,10 @@ const ContactSection = () => {
                   Message
                 </label>
                 <textarea
+                  name='message'
                   rows={4}
                   className='w-full bg-transparent outline-none pt-1 text-gray-800 resize-none'
+                  required
                 />
               </div>
 
@@ -60,6 +97,7 @@ const ContactSection = () => {
             </form>
           </div>
 
+          {/* Contact Info */}
           <div className='lg:col-span-5 space-y-8 lg:pl-12'>
             <h3 className='text-sm font-bold text-gray-900 uppercase tracking-widest mb-6'>
               Contact Info
