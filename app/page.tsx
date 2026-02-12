@@ -1,26 +1,23 @@
-import BlogSection from "@/component/Blog";
-import ContactSection from "@/component/Contact";
-import Footer from "@/component/Footer";
-import Hero from "@/component/Navbar";
-import PortfolioSection from "@/component/Portfolio";
-import ResumeSection from "@/component/Resume";
-import ServicesSection from "@/component/Services";
-import BioSection from "@/component/Skills";
-import TestimonialsSection from "@/component/Textimonial";
-import React from "react";
+import Navbar from "../component/Navbar";
+import Hero from "../component/Hero";
+import About from "../component/About";
+import FunFacts from "../component/Contact";
+import Portfolio from "../component/Funfacts";
+import Testimonials from "../component/Testimonial";
+import Contact from "../component/Portfolio";
+import Footer from "../component/Footer";
 
-export default function page() {
+export default function Home() {
   return (
-    <div>
+    <>
+      <Navbar />
       <Hero />
-      <BioSection />
-      <PortfolioSection />
-      <ServicesSection />
-      <ResumeSection />
-      <TestimonialsSection />
-      <BlogSection />
-      <ContactSection />
+      <About />
+      <FunFacts />
+      <Portfolio />
+      <Testimonials />
+      <Contact />
       <Footer />
-    </div>
+    </>
   );
 }

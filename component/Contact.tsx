@@ -1,158 +1,37 @@
 "use client";
 
-import { useRef } from "react";
-import emailjs from "@emailjs/browser";
-import { MapPin, Phone, Mail, Globe } from "lucide-react";
-
-const ContactSection = () => {
-  const form = useRef<HTMLFormElement>(null);
-
-  const sendEmail = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.current) return;
-
-    emailjs
-      .sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        form.current,
-        "YOUR_PUBLIC_KEY",
-      )
-      .then(
-        () => alert("Message sent successfully!"),
-        () => alert("Failed to send message."),
-      );
-
-    form.current.reset();
-  };
-
+export default function Contact() {
   return (
-    <section className='min-h-screen flex items-center justify-center py-24 px-6 bg-white'>
-      <div className='max-w-6xl w-full mx-auto'>
-        <h2 className='text-4xl font-semibold text-center text-gray-900 mb-20'>
-          Contact Me
-        </h2>
-
-        <div className='grid grid-cols-1 lg:grid-cols-12 gap-16 items-center'>
-          {/* Form */}
-          <div className='lg:col-span-7'>
-            <form
-              ref={form}
-              onSubmit={sendEmail}
-              className='space-y-10'>
-              <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
-                <div className='relative border-b border-gray-300 py-2 focus-within:border-[#96bb7c] transition-colors'>
-                  <label className='text-xs text-gray-400 uppercase font-bold tracking-widest'>
-                    First name
-                  </label>
-                  <input
-                    type='text'
-                    name='first_name'
-                    className='w-full bg-transparent outline-none pt-1 text-gray-800'
-                    required
-                  />
-                </div>
-                <div className='relative border-b border-gray-300 py-2 focus-within:border-[#96bb7c] transition-colors'>
-                  <label className='text-xs text-gray-400 uppercase font-bold tracking-widest'>
-                    Last name
-                  </label>
-                  <input
-                    type='text'
-                    name='last_name'
-                    className='w-full bg-transparent outline-none pt-1 text-gray-800'
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className='relative border-b border-gray-300 py-2 focus-within:border-[#96bb7c] transition-colors'>
-                <label className='text-xs text-gray-400 uppercase font-bold tracking-widest'>
-                  Email address
-                </label>
-                <input
-                  type='email'
-                  name='user_email'
-                  className='w-full bg-transparent outline-none pt-1 text-gray-800'
-                  required
-                />
-              </div>
-
-              <div className='relative border-b border-gray-300 py-2 focus-within:border-[#96bb7c] transition-colors'>
-                <label className='text-xs text-gray-400 uppercase font-bold tracking-widest'>
-                  Message
-                </label>
-                <textarea
-                  name='message'
-                  rows={4}
-                  className='w-full bg-transparent outline-none pt-1 text-gray-800 resize-none'
-                  required
-                />
-              </div>
-
-              <button
-                type='submit'
-                className='px-8 py-4 bg-[#96bb7c] text-white text-[10px] font-bold tracking-[0.2em] rounded-full hover:bg-[#85a86a] transition-all uppercase'>
-                Send Message
-              </button>
-            </form>
-          </div>
-
-          {/* Contact Info */}
-          <div className='lg:col-span-5 space-y-8 lg:pl-12'>
-            <h3 className='text-sm font-bold text-gray-900 uppercase tracking-widest mb-6'>
-              Contact Info
-            </h3>
-
-            <ul className='space-y-6'>
-              <li className='flex items-start gap-4 group'>
-                <div className='text-[#96bb7c] mt-1'>
-                  <MapPin size={18} />
-                </div>
-                <span className='text-gray-400 text-sm leading-relaxed'>
-                  Behria Town, Lahore
-                </span>
-              </li>
-
-              <li className='flex items-center gap-4 group'>
-                <div className='text-[#96bb7c]'>
-                  <Phone size={18} />
-                </div>
-                <a
-                  href='tel:+923018950901'
-                  className='text-gray-400 hover:text-[#96bb7c] text-sm transition-colors'>
-                  +92 3018950901
-                </a>
-              </li>
-
-              <li className='flex items-center gap-4 group'>
-                <div className='text-[#96bb7c]'>
-                  <Mail size={18} />
-                </div>
-                <a
-                  href='mailto:ansaasghr710@gmail.com'
-                  className='text-gray-400 hover:text-[#96bb7c] text-sm transition-colors'>
-                  ansaasghr710@gmail.com
-                </a>
-              </li>
-
-              <li className='flex items-center gap-4 group'>
-                <div className='text-[#96bb7c]'>
-                  <Globe size={18} />
-                </div>
-                <a
-                  href='https://github.com/Ansa-dev710'
-                  target='_blank'
-                  rel='noreferrer'
-                  className='text-gray-400 hover:text-[#96bb7c] text-sm transition-colors'>
-                  Github/Ansa-dev710
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
+    <section
+      id='contact'
+      className='py-20 bg-white px-6 lg:px-12'>
+      <div className='max-w-3xl mx-auto text-center mb-12'>
+        <h2 className='text-4xl font-bold mb-6'>Contact Me</h2>
+        <p className='text-gray-600 mb-8'>
+          Want to work together? Send me a message!
+        </p>
       </div>
+      <form className='max-w-2xl mx-auto grid grid-cols-1 gap-6'>
+        <input
+          type='text'
+          placeholder='Your Name'
+          className='border border-gray-300 rounded-lg p-3'
+        />
+        <input
+          type='email'
+          placeholder='Your Email'
+          className='border border-gray-300 rounded-lg p-3'
+        />
+        <textarea
+          placeholder='Your Message'
+          rows={5}
+          className='border border-gray-300 rounded-lg p-3'></textarea>
+        <button
+          type='submit'
+          className='px-8 py-4 bg-indigo-600 text-white rounded-lg font-bold hover:bg-indigo-700 transition'>
+          Send Message
+        </button>
+      </form>
     </section>
   );
-};
-
-export default ContactSection;
+}
