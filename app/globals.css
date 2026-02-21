@@ -1,29 +1,42 @@
 @import "tailwindcss";
 
-/* Theme Variables */
+/* =========================
+   THEME VARIABLES
+========================= */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Clyde Gold */
+  --color-clydeGold: #d4af37;
+
+  /* Clyde Accent Grey (from template #9B9B9B) */
+  --color-clydeAccent: #9b9b9b;
 }
 
-/* Tailwind Theme Mapping */
+/* Tailwind v4 Theme Mapping */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-clydeGold: var(--color-clydeGold);
+  --color-clydeAccent: var(--color-clydeAccent);
 }
 
+/* Dark Mode */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --color-clydeGold: #d4af37;
+    --color-clydeAccent: #9b9b9b;
   }
 }
 
-/* Global Styles */
+/* =========================
+   GLOBAL STYLES
+========================= */
 html {
-  scroll-behavior: smooth; /* Smooth scroll animation */
+  scroll-behavior: smooth;
 }
 
 body {
@@ -33,7 +46,9 @@ body {
   overflow-x: hidden;
 }
 
-/* Hero Gradient Animation */
+/* =========================
+   HERO GRADIENT ANIMATION
+========================= */
 @keyframes gradientMove {
   0% {
     background-position: 0% 50%;
@@ -51,13 +66,17 @@ body {
   animation: gradientMove 12s ease infinite;
 }
 
-/* Glass Effect for Navbar or Cards */
+/* =========================
+   GLASS EFFECT
+========================= */
 .glass {
   backdrop-filter: blur(12px);
   background: rgba(0, 0, 0, 0.6);
 }
 
-/* Navbar Background Animation (Light Mode Parallax) */
+/* =========================
+   NAVBAR BACKGROUND ANIMATION
+========================= */
 @keyframes backgroundScroll {
   0% {
     background-position: 0% 0%;
@@ -75,8 +94,29 @@ body {
   background-size: 200% 200%;
 }
 
-/* Utility for Hero / Section Images */
+/* =========================
+   IMAGE UTILITY
+========================= */
 .bg-cover-center {
   background-size: cover;
   background-position: center;
+}
+
+/* =========================
+   NEW UTILITIES FOR CLYDE ACCENT
+========================= */
+
+/* Text color for Clyde Accent Grey */
+.text-clydeAccent {
+  color: var(--color-clydeAccent);
+}
+
+/* Background color for Clyde Accent Grey */
+.bg-clydeAccent {
+  background-color: var(--color-clydeAccent);
+}
+
+/* Border color for Clyde Accent Grey */
+.border-clydeAccent {
+  border-color: var(--color-clydeAccent);
 }

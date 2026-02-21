@@ -1,16 +1,11 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [active, setActive] = useState("Home");
 
   const navLinks = [
     { name: "Home", path: "#hero" },
@@ -21,69 +16,83 @@ export default function Navbar() {
     { name: "Contact", path: "#contact" },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      navLinks.forEach((link) => {
+        const section = document.querySelector(link.path);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            setActive(link.name);
+          }
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-white shadow-md py-3" : "bg-transparent py-5"
-      }`}>
+    <nav className='fixed w-full z-50 bg-[#1a1a1a] shadow-xl py-5'>
       <div className='max-w-7xl mx-auto flex justify-between items-center px-6 lg:px-12'>
-        {/* Logo */}
         <Link
           href='#hero'
-          className='text-2xl font-bold text-gray-900'>
-          Ansa<span className='text-gray-700'></span>
+          className='text-2xl font-black uppercase tracking-tighter text-white'>
+          ANSA<span className='text-[#B5BFA1]'>.</span>
         </Link>
 
-        {/* Desktop Menu */}
-        <ul className='hidden md:flex gap-8 text-sm font-medium'>
+        <ul className='hidden md:flex gap-10 text-[12px] font-bold uppercase tracking-[2px]'>
           {navLinks.map((item) => (
-            <li
-              key={item.name}
-              className='relative'>
+            <li key={item.name}>
               <a
                 href={item.path}
-                className='text-gray-900 hover:text-gray-900 transition-colors duration-300'>
+                className={`relative transition-colors duration-300 pb-2 ${
+                  active === item.name
+                    ? "text-[#B5BFA1]"
+                    : "text-white hover:text-[#B5BFA1]"
+                }`}>
                 {item.name}
-                {/* underline */}
-                <span className='absolute left-1/2 -bottom-1 w-0 h-[0.5] bg-gray-900 transition-all duration-300 transform -translate-x-1/2 hover:w-full'></span>
+
+                <span
+                  className={`absolute left-0 bottom-0 h-[0.5] bg-[#B5BFA1] transition-all duration-300 ${
+                    active === item.name ? "w-full" : "w-0"
+                  }`}></span>
               </a>
             </li>
           ))}
         </ul>
 
-        {/* Mobile Menu Button */}
         <button
-          className='md:hidden text-2xl text-gray-900'
+          className='md:hidden text-white font-bold text-xs uppercase tracking-widest'
           onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? "×" : "☰"}
+          {isOpen ? "Close ×" : "Menu ☰"}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       <div
-        className={`md:hidden fixed top-0 left-0 w-full h-full bg-white z-40 transform transition-transform duration-300 ${
+        className={`md:hidden fixed top-0 left-0 w-full h-screen bg-[#1a1a1a] z-50 transform transition-transform duration-500 ease-in-out ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}>
-        <div className='flex justify-between items-center px-6 py-5 border-b border-gray-200'>
-          <Link
-            href='#hero'
-            className='text-2xl font-bold text-gray-900'
-            onClick={() => setIsOpen(false)}>
-            Ansa<span className='text-gray-700'>Portfolio</span>
-          </Link>
+        <div className='flex justify-between items-center px-8 py-6 border-b border-white/10'>
+          <span className='text-2xl font-black text-white uppercase'>
+            ANSA<span className='text-[#B5BFA1]'>.</span>
+          </span>
           <button
-            className='text-3xl text-gray-900'
+            className='text-4xl text-white'
             onClick={() => setIsOpen(false)}>
             ×
           </button>
         </div>
-        <ul className='flex flex-col gap-6 mt-8 px-6'>
+
+        <ul className='flex flex-col items-center justify-center gap-8 mt-16 text-lg font-bold uppercase tracking-[3px] text-white'>
           {navLinks.map((item) => (
             <li key={item.name}>
               <a
                 href={item.path}
                 onClick={() => setIsOpen(false)}
-                className='text-gray-900 text-lg hover:text-gray-600 transition-colors duration-300'>
+                className={`transition-colors ${active === item.name ? "text-[#B5BFA1]" : "text-white"}`}>
                 {item.name}
               </a>
             </li>
