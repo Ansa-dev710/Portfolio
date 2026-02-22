@@ -7,12 +7,14 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [active, setActive] = useState("Home");
 
+  // Template ke mutabiq updated links
   const navLinks = [
     { name: "Home", path: "#hero" },
     { name: "About", path: "#about" },
+    { name: "Skills", path: "#skills" }, // Skills section add kiya gaya
     { name: "Services", path: "#services" },
-    { name: "Portfolio", path: "#portfolio" },
-    { name: "Testimonials", path: "#testimonials" },
+    { name: "Projects", path: "#portfolio" }, // Portfolio ko Projects kar diya
+    { name: "Blog", path: "#blog" }, // Blog add kiya
     { name: "Contact", path: "#contact" },
   ];
 
@@ -22,7 +24,7 @@ export default function Navbar() {
         const section = document.querySelector(link.path);
         if (section) {
           const rect = section.getBoundingClientRect();
-
+          // Current active section highlight karne ke liye logic
           if (rect.top <= 150 && rect.bottom >= 150) {
             setActive(link.name);
           }
@@ -43,7 +45,8 @@ export default function Navbar() {
           ANSA<span className='text-[#B5BFA1]'>.</span>
         </Link>
 
-        <ul className='hidden md:flex gap-10 text-[12px] font-bold uppercase tracking-[2px]'>
+        {/* DESKTOP MENU */}
+        <ul className='hidden md:flex gap-8 text-[11px] font-bold uppercase tracking-[2px]'>
           {navLinks.map((item) => (
             <li key={item.name}>
               <a
@@ -54,7 +57,7 @@ export default function Navbar() {
                     : "text-white hover:text-[#B5BFA1]"
                 }`}>
                 {item.name}
-
+                {/* Active Indicator Line */}
                 <span
                   className={`absolute left-0 bottom-0 h-[0.5] bg-[#B5BFA1] transition-all duration-300 ${
                     active === item.name ? "w-full" : "w-0"
@@ -64,6 +67,7 @@ export default function Navbar() {
           ))}
         </ul>
 
+        {/* MOBILE MENU BUTTON */}
         <button
           className='md:hidden text-white font-bold text-xs uppercase tracking-widest'
           onClick={() => setIsOpen(!isOpen)}>
@@ -71,6 +75,7 @@ export default function Navbar() {
         </button>
       </div>
 
+      {/* MOBILE FULL SCREEN MENU */}
       <div
         className={`md:hidden fixed top-0 left-0 w-full h-screen bg-[#1a1a1a] z-50 transform transition-transform duration-500 ease-in-out ${
           isOpen ? "translate-x-0" : "-translate-x-full"
@@ -92,7 +97,9 @@ export default function Navbar() {
               <a
                 href={item.path}
                 onClick={() => setIsOpen(false)}
-                className={`transition-colors ${active === item.name ? "text-[#B5BFA1]" : "text-white"}`}>
+                className={`transition-colors ${
+                  active === item.name ? "text-[#B5BFA1]" : "text-white"
+                }`}>
                 {item.name}
               </a>
             </li>

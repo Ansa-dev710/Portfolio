@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+import { Music, Plane, Camera, Gamepad2 } from "lucide-react";
+
 export default function About() {
   const personalInfo = [
     { label: "Name", value: "Ansa Asghar" },
@@ -13,25 +15,30 @@ export default function About() {
     { label: "Phone", value: "+92 301 8950901" },
   ];
 
+  const interests = [
+    { icon: <Music size={20} />, label: "Music" },
+    { icon: <Plane size={20} />, label: "Travel" },
+    { icon: <Camera size={20} />, label: "Photos" },
+    { icon: <Gamepad2 size={20} />, label: "Gaming" },
+  ];
+
   return (
     <section
       id='about'
       className='relative py-24 bg-white px-6 lg:px-16 overflow-hidden'>
       <div className='max-w-7xl mx-auto'>
         <div className='grid lg:grid-cols-2 gap-16 items-center'>
-          {/* LEFT SIDE - IMAGE WITH BACKGROUND BLOCK */}
+          {/* LEFT SIDE - IMAGE */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className='relative'>
-            {/* The decorative background block like Clyde */}
             <div className='absolute -bottom-10 -left-10 w-full h-full bg-[#B5BFA1] -z-10 hidden md:block'></div>
-
-            <div className='relative aspect-[3/4] w-full max-w-md mx-auto shadow-2xl overflow-hidden'>
+            <div className='relative aspect-3/4 w-full max-w-md mx-auto shadow-2xl overflow-hidden'>
               <Image
-                src='/profile.jpg' // Replace with your actual image path
+                src='/profile.jpg'
                 alt='Ansa Asghar'
                 fill
                 className='object-cover grayscale hover:grayscale-0 transition-all duration-700'
@@ -55,7 +62,6 @@ export default function About() {
               which roasted parts of sentences fly into your mouth.
             </p>
 
-            {/* Personal Info List - Clyde Style */}
             <ul className='space-y-4 mb-10'>
               {personalInfo.map((info, idx) => (
                 <li
@@ -71,11 +77,27 @@ export default function About() {
               ))}
             </ul>
 
-            {/* Stats / Call to Action */}
-            <div className='pt-4'>
-              <h3 className='text-xl font-bold text-black mb-4'>
-                <span className='text-[#B5BFA1]'>120</span> Project complete
+            {/* INTERESTS SECTION (Music, Travel, etc.) */}
+            <div className='mb-10'>
+              <h3 className='text-sm font-bold text-black uppercase tracking-[0.2em] mb-6'>
+                My Interests
               </h3>
+              <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
+                {interests.map((item, index) => (
+                  <div
+                    key={index}
+                    className='flex flex-col items-center p-4 border border-gray-100 rounded-lg hover:shadow-md transition-shadow'>
+                    <div className='text-[#B5BFA1] mb-2'>{item.icon}</div>
+                    <span className='text-[10px] font-bold uppercase tracking-widest text-gray-400'>
+                      {item.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* DOWNLOAD CV BUTTON */}
+            <div className='pt-4'>
               <a
                 href='/cv.pdf'
                 className='inline-block px-10 py-4 bg-[#B5BFA1] text-white text-xs font-bold uppercase tracking-widest rounded-full hover:bg-black transition-all shadow-lg'>
