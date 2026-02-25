@@ -5,6 +5,7 @@ import Skills from "../component/skills";
 import Services from "../component/services";
 import FunFacts from "../component/Funfacts";
 import Portfolio from "../component/project";
+import Blog from "../component/Blog";
 import Contact from "../component/Contact";
 import Footer from "../component/Footer";
 
@@ -18,6 +19,7 @@ export default function Home() {
       <Services />
       <FunFacts />
       <Portfolio />
+      <Blog />
       <Contact />
       <Footer />
     </main>

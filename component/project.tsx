@@ -29,26 +29,20 @@ export default function ProjectsAndTestimonials() {
     {
       name: "Roger Scott",
       position: "Marketing Manager",
-      text: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+      text: "Working with this developer was a game-changer. The attention to detail and ability to translate complex requirements into a seamless UI is truly remarkable.",
       image: "/person_1.jpg",
     },
     {
       name: "Sarah Johnson",
       position: "Product Designer",
-      text: "Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean flows by their place.",
+      text: "Exceptional service and professional workflow. The final product exceeded our expectations in both performance and aesthetics. Highly recommended!",
       image: "/person_2.jpg",
     },
     {
       name: "Michael Smith",
       position: "Web Developer",
-      text: "A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.",
+      text: "A highly skilled individual who understands the nuances of modern web technologies. The project was delivered on time with top-notch code quality.",
       image: "/person_3.jpg",
-    },
-    {
-      name: "Jessica Williams",
-      position: "CEO, TechFlow",
-      text: "Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day.",
-      image: "/person_4.jpg",
     },
   ];
 
@@ -59,34 +53,40 @@ export default function ProjectsAndTestimonials() {
         className='py-24 bg-white px-6 lg:px-16'>
         <div className='max-w-7xl mx-auto'>
           <div className='text-center mb-16'>
-            <span className='text-[#B5BFA1] text-[11px] font-bold uppercase tracking-[0.3em] mb-4 block'>
-              Accomplishments
+            <span className='text-[#B5BFA1] text-[11px] font-bold uppercase tracking-[0.4em] mb-4 block'>
+              Portfolio
             </span>
-            <h2 className='text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-6 tracking-tight uppercase'>
-              My Projects
+            <h2 className='text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6 tracking-tight'>
+              Featured Work
             </h2>
           </div>
 
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
             {projectItems.map((item, index) => (
               <motion.div
                 key={index}
-                className='group relative overflow-hidden aspect-square cursor-pointer bg-gray-100'>
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className='group relative overflow-hidden aspect-4/5 cursor-pointer bg-gray-100 rounded-sm'>
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
                   className='object-cover transition-transform duration-700 group-hover:scale-110'
                 />
-                <div className='absolute inset-0 bg-[#B5BFA1]/90 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-center px-4'>
-                  <Plus
-                    className='text-white mb-2'
-                    size={20}
-                  />
-                  <span className='text-white/80 text-[9px] uppercase font-bold tracking-[2px] mb-1'>
+                <div className='absolute inset-0 bg-[#1a1a1a]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-center px-6'>
+                  <div className='w-10 h-10 bg-[#B5BFA1] rounded-full flex items-center justify-center mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500'>
+                    <Plus
+                      className='text-white'
+                      size={20}
+                    />
+                  </div>
+                  <span className='text-[#B5BFA1] text-[10px] uppercase font-bold tracking-[2px] mb-2'>
                     {item.category}
                   </span>
-                  <h3 className='text-white text-lg font-bold uppercase tracking-tighter'>
+                  <h3 className='text-white text-xl font-bold uppercase tracking-tight'>
                     {item.title}
                   </h3>
                 </div>
@@ -98,14 +98,18 @@ export default function ProjectsAndTestimonials() {
 
       <section className='py-32 bg-[#B5BFA1] px-6 lg:px-16 overflow-hidden relative'>
         <div className='max-w-7xl mx-auto'>
-          <div className='text-center mb-24'>
-            <span className='text-white/60 text-[11px] font-bold uppercase tracking-[0.3em] mb-4 block'>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className='text-center mb-20'>
+            <span className='text-white text-[11px] font-bold uppercase tracking-[0.4em] mb-4 block'>
               Testimonial
             </span>
-            <h2 className='text-4xl md:text-5xl font-bold text-white mb-6'>
-              What client says about?
+
+            <h2 className='text-4xl md:text-6xl font-bold text-[#1a1a1a] mb-6 tracking-tighter'>
+              Client Testimonials
             </h2>
-          </div>
+          </motion.div>
 
           <Swiper
             modules={[Pagination, Autoplay]}
@@ -113,21 +117,22 @@ export default function ProjectsAndTestimonials() {
             slidesPerView={1}
             loop={true}
             autoplay={{ delay: 5000, disableOnInteraction: false }}
-            pagination={{
-              clickable: true,
-              dynamicBullets: false,
-            }}
+            pagination={{ clickable: true }}
             breakpoints={{
               768: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
             }}
-            className='testimonial-swiper pb-20'>
+            className='testimonial-swiper pb-24'>
             {testimonials.map((t, i) => (
               <SwiperSlide
                 key={i}
                 className='h-auto'>
-                <div className='bg-white p-10 h-full relative shadow-2xl rounded-none flex flex-col'>
-                  <div className='absolute -top-5 left-10 w-12 h-12 bg-white flex items-center justify-center shadow-lg'>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  className='bg-white p-12 h-full relative flex flex-col shadow-xl hover:shadow-2xl transition-all duration-500'>
+                  <div className='absolute -top-6 left-10 w-12 h-12 bg-[#1a1a1a] flex items-center justify-center shadow-xl'>
                     <Quote
                       size={20}
                       className='text-[#B5BFA1]'
@@ -136,13 +141,13 @@ export default function ProjectsAndTestimonials() {
                   </div>
 
                   <div className='grow'>
-                    <p className='text-gray-500 text-[15px] leading-relaxed mb-10 italic'>
+                    <p className='text-gray-700 text-[16px] leading-relaxed mb-10 font-normal italic'>
                       "{t.text}"
                     </p>
                   </div>
 
-                  <div className='flex items-center gap-5 pt-6 border-t border-gray-50'>
-                    <div className='relative w-14 h-14 rounded-full overflow-hidden shrink-0 border-2 border-gray-100'>
+                  <div className='flex items-center gap-5 pt-8 border-t border-gray-100'>
+                    <div className='relative w-14 h-14 rounded-full overflow-hidden shrink-0'>
                       <Image
                         src={t.image}
                         alt={t.name}
@@ -151,15 +156,15 @@ export default function ProjectsAndTestimonials() {
                       />
                     </div>
                     <div>
-                      <h4 className='font-bold text-[#1a1a1a] text-md leading-tight'>
+                      <h4 className='font-bold text-[#1a1a1a] text-lg leading-tight tracking-tight'>
                         {t.name}
                       </h4>
-                      <p className='text-[#B5BFA1] text-[10px] font-bold uppercase tracking-widest mt-1'>
+                      <p className='text-[#B5BFA1] text-[11px] font-bold uppercase tracking-widest mt-1'>
                         {t.position}
                       </p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               </SwiperSlide>
             ))}
           </Swiper>
@@ -169,19 +174,20 @@ export default function ProjectsAndTestimonials() {
           jsx
           global>{`
           .testimonial-swiper .swiper-pagination {
-            bottom: 0px !important;
+            bottom: 20px !important;
           }
           .testimonial-swiper .swiper-pagination-bullet {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             background: white !important;
-            opacity: 0.3;
-            margin: 0 6px !important;
-            transition: all 0.3s ease;
+            opacity: 0.5;
+            transition: all 0.4s ease;
+            margin: 0 8px !important;
           }
           .testimonial-swiper .swiper-pagination-bullet-active {
             opacity: 1 !important;
-            transform: scale(1.3);
+            transform: scale(1.4);
+            background: #1a1a1a !important; /* Active dot is black */
           }
         `}</style>
       </section>
