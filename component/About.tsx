@@ -28,7 +28,6 @@ export default function About() {
       className='relative py-24 bg-white px-6 lg:px-16 overflow-hidden'>
       <div className='max-w-7xl mx-auto'>
         <div className='grid lg:grid-cols-2 gap-16 items-center'>
-          {/* LEFT SIDE - IMAGE */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -46,7 +45,6 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* RIGHT SIDE - CONTENT */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -77,7 +75,6 @@ export default function About() {
               ))}
             </ul>
 
-            {/* INTERESTS SECTION (Music, Travel, etc.) */}
             <div className='mb-10'>
               <h3 className='text-sm font-bold text-black uppercase tracking-[0.2em] mb-6'>
                 My Interests
@@ -96,7 +93,6 @@ export default function About() {
               </div>
             </div>
 
-            {/* DOWNLOAD CV BUTTON */}
             <div className='pt-4'>
               <a
                 href='/cv.pdf'
