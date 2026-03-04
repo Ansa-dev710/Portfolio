@@ -14,7 +14,6 @@ const Footer = () => {
     <footer className='bg-[#232931] pt-24 pb-12 px-6 lg:px-16 text-white'>
       <div className='max-w-7xl mx-auto'>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20'>
-          {/* Column 1: About (Updated Description) */}
           <div className='space-y-6'>
             <h4 className='text-xl font-bold'>Lets talk about</h4>
             <p className='text-gray-400 text-sm leading-relaxed'>
@@ -27,7 +26,6 @@ const Footer = () => {
             </button>
           </div>
 
-          {/* Column 2: Links */}
           <div className='space-y-6'>
             <h4 className='text-xl font-bold'>Links</h4>
             <ul className='space-y-4'>
@@ -49,7 +47,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 3: Services */}
           <div className='space-y-6'>
             <h4 className='text-xl font-bold'>Services</h4>
             <ul className='space-y-4'>
@@ -75,7 +72,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 4: Contact Info */}
           <div className='space-y-6'>
             <h4 className='text-xl font-bold'>Have a Questions?</h4>
             <ul className='space-y-6 text-gray-400'>

@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-
 import { Music, Plane, Camera, Gamepad2 } from "lucide-react";
 
 export default function About() {
@@ -28,6 +27,7 @@ export default function About() {
       className='relative py-24 bg-white px-6 lg:px-16 overflow-hidden'>
       <div className='max-w-7xl mx-auto'>
         <div className='grid lg:grid-cols-2 gap-16 items-center'>
+          {/* Left Side: Image Section */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -40,11 +40,13 @@ export default function About() {
                 src='/profile.jpg'
                 alt='Ansa Asghar'
                 fill
+                priority
                 className='object-cover grayscale hover:grayscale-0 transition-all duration-700'
               />
             </div>
           </motion.div>
 
+          {/* Right Side: Content Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -54,12 +56,26 @@ export default function About() {
               About <span className='text-[#B5BFA1]'>Me</span>
             </h2>
 
+            {/* Updated Professional Description */}
             <p className='text-gray-500 text-lg leading-relaxed mb-10'>
-              A small river named Duden flows by their place and supplies it
-              with the necessary regelialia. It is a paradisematic country, in
-              which roasted parts of sentences fly into your mouth.
+              I am a passionate{" "}
+              <span className='text-black font-semibold'>
+                Full Stack Web Developer
+              </span>{" "}
+              with a strong foundation in building high-performance, visually
+              stunning web applications. With professional experience at{" "}
+              <span className='text-black font-semibold'>Heapware</span> and
+              technical training from{" "}
+              <span className='text-black font-semibold'>Ideoversity</span>, I
+              specialize in modern technologies like{" "}
+              <span className='text-[#B5BFA1] font-bold'>
+                Next.js, React, TypeScript, and Tailwind CSS
+              </span>
+              . My focus is always on creating seamless UI/UX experiences that
+              blend technical functionality with creative design.
             </p>
 
+            {/* Personal Info - Wahi Purana Style jo aapne manga tha */}
             <ul className='space-y-4 mb-10'>
               {personalInfo.map((info, idx) => (
                 <li
@@ -75,6 +91,7 @@ export default function About() {
               ))}
             </ul>
 
+            {/* Interests Section */}
             <div className='mb-10'>
               <h3 className='text-sm font-bold text-black uppercase tracking-[0.2em] mb-6'>
                 My Interests
