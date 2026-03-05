@@ -113,14 +113,12 @@ export default function ProjectsAndTestimonials() {
                   className='object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110'
                 />
                 <div className='absolute inset-0 bg-[#1a1a1a]/85 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center text-center p-6'>
-                  <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    className='w-12 h-12 bg-[#B5BFA1] rounded-full flex items-center justify-center mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500'>
+                  <div className='w-12 h-12 bg-[#B5BFA1] rounded-full flex items-center justify-center mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500'>
                     <Plus
                       className='text-white'
                       size={24}
                     />
-                  </motion.div>
+                  </div>
                   <span className='text-[#B5BFA1] text-[10px] uppercase font-bold tracking-[2px] mb-2'>
                     {item.category}
                   </span>
@@ -160,9 +158,6 @@ export default function ProjectsAndTestimonials() {
             pagination={{
               clickable: true,
               el: ".custom-pagination",
-              renderBullet: (_index: number, className: string) => {
-                return `<span class="${className}"></span>`;
-              },
             }}
             breakpoints={{
               768: { slidesPerView: 2 },
@@ -179,23 +174,23 @@ export default function ProjectsAndTestimonials() {
                   whileInView='visible'
                   viewport={{ once: true }}
                   custom={i % 3}
-                  className='bg-white p-8 md:p-10 h-full flex flex-col shadow-2xl transition-colors duration-500 relative rounded-sm group hover:bg-[#1a1a1a] transition-colors'>
-                  <div className='absolute -top-5 left-10 w-12 h-12 bg-[#1a1a1a] group-hover:bg-[#B5BFA1] flex items-center justify-center shadow-xl z-10 transition-colors'>
+                  className='bg-white p-8 md:p-10 h-full flex flex-col shadow-2xl relative rounded-sm group hover:bg-[#B5BFA1] transition-all duration-500'>
+                  <div className='absolute -top-5 left-10 w-12 h-12 bg-[#1a1a1a] flex items-center justify-center shadow-xl z-10'>
                     <Quote
                       size={20}
-                      className='text-[#B5BFA1] group-hover:text-white'
+                      className='text-[#B5BFA1] group-hover:text-white transition-colors duration-300'
                       fill='currentColor'
                     />
                   </div>
 
                   <div className='grow pt-4'>
-                    <p className='text-gray-500 group-hover:text-gray-300 text-[15px] leading-relaxed mb-8 italic font-light'>
-                      "{t.text}"
+                    <p className='text-gray-500 group-hover:text-white text-[15px] leading-relaxed mb-8 italic font-light transition-colors duration-300'>
+                      &quot;{t.text}&quot;
                     </p>
                   </div>
 
-                  <div className='flex items-center gap-4 pt-8 border-t border-gray-100 group-hover:border-gray-800'>
-                    <div className='relative w-14 h-14 rounded-full overflow-hidden shrink-0 border-2 border-[#f0f0f0] shadow-md'>
+                  <div className='flex items-center gap-4 pt-8 border-t border-gray-100 group-hover:border-white/20 transition-colors duration-300'>
+                    <div className='relative w-14 h-14 rounded-full overflow-hidden shrink-0 border-2 border-[#f0f0f0] group-hover:border-white/50 shadow-md transition-colors duration-300'>
                       <Image
                         src={t.image}
                         alt={t.name}
@@ -204,10 +199,10 @@ export default function ProjectsAndTestimonials() {
                       />
                     </div>
                     <div>
-                      <h4 className='font-bold text-[#1a1a1a] group-hover:text-white text-md leading-tight'>
+                      <h4 className='font-bold text-[#1a1a1a] group-hover:text-white text-md leading-tight transition-colors duration-300'>
                         {t.name}
                       </h4>
-                      <p className='text-[#B5BFA1] text-[10px] font-bold uppercase tracking-widest mt-1'>
+                      <p className='text-[#B5BFA1] group-hover:text-[#1a1a1a] text-[10px] font-bold uppercase tracking-widest mt-1 transition-colors duration-300'>
                         {t.position}
                       </p>
                     </div>

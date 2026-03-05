@@ -2,101 +2,135 @@
 
 import { motion } from "framer-motion";
 import { MessageSquare, User, Calendar } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Blog() {
   const blogs = [
     {
       id: 1,
-      image:
-        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop",
-      date: "Feb. 21, 2026",
-      author: "Admin",
+      image: "/blog-image1.jpg",
+      date: "March 05, 2026",
+      author: "Ansa",
       comments: 3,
-      title: "The Best Way to Design Your Website",
+      title: "Mastering Modern UI/UX Design Trends",
       description:
-        "A small river named Duden flows by their place and supplies it with the necessary regelialia.",
+        "Explore how minimalist aesthetics and fluid animations are redefining user engagement in the 2026 digital landscape.",
     },
     {
       id: 2,
-      image:
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop",
+      image: "/blog-image2.jpg",
       date: "Feb. 15, 2026",
-      author: "Admin",
+      author: "Ansa",
       comments: 5,
-      title: "Food and Drink Design for 2026",
+      title: "The Power of Server-Side Rendering",
       description:
-        "Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life.",
+        "Deep dive into Next.js and why SSR is crucial for building scalable, high-performance web applications today.",
     },
     {
       id: 3,
-      image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
+      image: "/blog-image3.jpg",
       date: "Jan. 28, 2026",
-      author: "Admin",
+      author: "Ansa",
       comments: 2,
-      title: "Why SEO is Important for Your Business",
+      title: "Scaling SEO with Technical Precision",
       description:
-        "When she reached the first hills of the Italic Mountains, she had a last view back on the skyline.",
+        "Beyond keywords: how core web vitals and structured data can significantly boost your organic search rankings.",
     },
   ];
 
   return (
     <section
       id='blog'
-      className='py-24 bg-white px-6 lg:px-16'>
+      className='py-24 bg-[#f8f9fa] px-6 lg:px-16'>
       <div className='max-w-7xl mx-auto'>
-        <div className='text-center mb-20'>
-          <span className='text-[#B5BFA1] text-[12px] font-bold uppercase tracking-[0.4em] mb-4 block'>
+        {/* Section Header */}
+        <div className='text-center mb-16'>
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className='text-[#B5BFA1] text-[13px] font-semibold uppercase tracking-[4px] mb-2 block'>
             Our Blog
-          </span>
-          <h2 className='text-4xl md:text-5xl font-bold text-[#1a1a1a] tracking-tight'>
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className='text-5xl font-bold text-[#1a1a1a]'>
             Recent Blog
-          </h2>
+          </motion.h2>
         </div>
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
           {blogs.map((blog, index) => (
             <motion.div
               key={blog.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className='group cursor-pointer'>
-              <div className='relative h-[400] w-full overflow-hidden mb-8 shadow-sm'>
-                <img
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className='flex flex-col group'>
+              {/* IMAGE CONTAINER FIX: Added aspect-video and min-height */}
+              <Link
+                href={`/blog/${blog.id}`}
+                className='relative aspect-video w-full overflow-hidden mb-7 bg-gray-200 block rounded-sm shadow-sm'>
+                <Image
                   src={blog.image}
                   alt={blog.title}
-                  className='w-full h-full object-cover transition-transform duration-700 group-hover:scale-110'
+                  fill
+                  sizes='(max-width: 768px) 100vw, 33vw'
+                  className='object-cover transition-transform duration-1000 group-hover:scale-110'
+                  priority={index === 0}
                 />
+              </Link>
+
+              {/* Meta Info */}
+              <div className='flex items-center gap-4 mb-3 text-[11px] uppercase tracking-widest text-[#b1b1b1] font-bold'>
+                <div className='flex items-center gap-1.5'>
+                  <Calendar
+                    size={13}
+                    className='text-[#B5BFA1]'
+                  />
+                  {blog.date}
+                </div>
+                <div className='flex items-center gap-1.5'>
+                  <User
+                    size={13}
+                    className='text-[#B5BFA1]'
+                  />
+                  {blog.author}
+                </div>
+                <div className='flex items-center gap-1.5'>
+                  <MessageSquare
+                    size={13}
+                    className='text-[#B5BFA1]'
+                  />
+                  {blog.comments}
+                </div>
               </div>
 
-              <div className='px-2'>
-                <div className='flex items-center gap-6 mb-4 text-[11px] uppercase tracking-widest text-gray-400 font-semibold'>
-                  <span className='text-[#B5BFA1] flex items-center gap-1'>
-                    <Calendar size={13} /> {blog.date}
-                  </span>
-                  <span className='flex items-center gap-1'>
-                    <User size={13} /> {blog.author}
-                  </span>
-                  <span className='flex items-center gap-1'>
-                    <MessageSquare size={13} /> {blog.comments}
-                  </span>
-                </div>
-
-                <h3 className='text-2xl font-bold text-[#1a1a1a] mb-4 leading-snug group-hover:text-[#B5BFA1] transition-colors duration-300'>
+              {/* Title */}
+              <Link href={`/blog/${blog.id}`}>
+                <h3 className='text-[22px] font-bold text-[#1a1a1a] mb-4 leading-[1.3] group-hover:text-[#B5BFA1] transition-colors duration-300'>
                   {blog.title}
                 </h3>
+              </Link>
 
-                <p className='text-gray-500 text-[15px] leading-relaxed mb-6 line-clamp-2'>
-                  {blog.description}
-                </p>
+              <p className='text-[#999999] text-[15px] leading-[1.8] mb-6 font-light'>
+                {blog.description}
+              </p>
 
-                <div className='inline-block border-b-2 border-[#B5BFA1] pb-1'>
-                  <span className='text-[12px] font-bold uppercase tracking-wider text-[#1a1a1a]'>
-                    Read More
-                  </span>
-                </div>
+              {/* Read More Button */}
+              <div className='mt-auto'>
+                <Link
+                  href={`/blog/${blog.id}`}
+                  className='relative inline-block text-[12px] font-bold uppercase tracking-[2px] text-[#1a1a1a] hover:text-[#B5BFA1] transition-all duration-300'>
+                  Read More
+                  {/* Underline Fix: Added height as 1px or 2px */}
+                  <span className='block h-[0.5] w-full bg-[#B5BFA1] mt-1 transform scale-x-50 group-hover:scale-x-100 transition-transform duration-300 origin-left'></span>
+                </Link>
               </div>
             </motion.div>
           ))}
