@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageSquare, User, Calendar } from "lucide-react";
+import { MessageSquare, User, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,7 +10,8 @@ export default function Blog() {
     {
       id: 1,
       image: "/blog-image1.jpg",
-      date: "March 05, 2026",
+      date: "05 Mar",
+      year: "2026",
       author: "Ansa",
       comments: 3,
       title: "Mastering Modern UI/UX Design Trends",
@@ -20,7 +21,8 @@ export default function Blog() {
     {
       id: 2,
       image: "/blog-image2.jpg",
-      date: "Feb. 15, 2026",
+      date: "15 Feb",
+      year: "2026",
       author: "Ansa",
       comments: 5,
       title: "The Power of Server-Side Rendering",
@@ -30,7 +32,8 @@ export default function Blog() {
     {
       id: 3,
       image: "/blog-image3.jpg",
-      date: "Jan. 28, 2026",
+      date: "28 Jan",
+      year: "2026",
       author: "Ansa",
       comments: 2,
       title: "Scaling SEO with Technical Precision",
@@ -40,96 +43,102 @@ export default function Blog() {
   ];
 
   return (
-    <section
-      id='blog'
-      className='py-24 bg-[#f8f9fa] px-6 lg:px-16'>
-      <div className='max-w-7xl mx-auto'>
-        {/* Section Header */}
-        <div className='text-center mb-16'>
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className='text-[#B5BFA1] text-[13px] font-semibold uppercase tracking-[4px] mb-2 block'>
-            Our Blog
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className='text-5xl font-bold text-[#1a1a1a]'>
-            Recent Blog
-          </motion.h2>
-        </div>
+    <section id='blog' className='py-32 bg-[#0a0a0a] px-6 lg:px-16 relative overflow-hidden'>
+      {/* Background Subtle Glow */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#B5BFA1]/5 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
-          {blogs.map((blog, index) => (
-            <motion.div
-              key={blog.id}
+      <div className='max-w-7xl mx-auto relative z-10'>
+        
+        {/* Section Header */}
+        <div className='flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6'>
+          <div className="max-w-2xl">
+            <motion.span
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className='text-[#B5BFA1] text-[12px] font-bold uppercase tracking-[0.5em] mb-4 block'>
+              Insights & Articles
+            </motion.span>
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className='flex flex-col group'>
-              {/* IMAGE CONTAINER FIX: Added aspect-video and min-height */}
-              <Link
-                href={`/blog/${blog.id}`}
-                className='relative aspect-video w-full overflow-hidden mb-7 bg-gray-200 block rounded-sm shadow-sm'>
+              transition={{ delay: 0.1 }}
+              className='text-5xl md:text-6xl font-black text-white tracking-tighter uppercase leading-none'>
+              Latest <span className="text-[#B5BFA1] italic font-light">Stories</span>
+            </motion.h2>
+          </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="hidden md:block"
+          >
+             <Link href="/blog" className="text-[11px] font-bold uppercase tracking-widest text-white/50 border-b border-white/10 pb-1 hover:text-[#B5BFA1] hover:border-[#B5BFA1] transition-all duration-300">
+                View All Posts
+             </Link>
+          </motion.div>
+        </div>
+
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12'>
+          {blogs.map((blog, index) => (
+            <motion.div
+              key={blog.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: index * 0.15 }}
+              className='flex flex-col group cursor-pointer'>
+              
+              {/* Image Container with Dark Overlay */}
+              <div className='relative aspect-[16/10] w-full overflow-hidden mb-8 rounded-2xl bg-[#111111] border border-white/5'>
                 <Image
                   src={blog.image}
                   alt={blog.title}
                   fill
-                  sizes='(max-width: 768px) 100vw, 33vw'
-                  className='object-cover transition-transform duration-1000 group-hover:scale-110'
-                  priority={index === 0}
+                  className='object-cover opacity-80 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-105'
                 />
-              </Link>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent opacity-60" />
+                
+                {/* Dark Date Badge */}
+                <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md border border-white/10 px-4 py-2 rounded-xl text-center">
+                  <span className="block text-sm font-black text-white leading-none">{blog.date}</span>
+                  <span className="block text-[10px] text-[#B5BFA1] font-bold uppercase mt-1">{blog.year}</span>
+                </div>
+              </div>
 
               {/* Meta Info */}
-              <div className='flex items-center gap-4 mb-3 text-[11px] uppercase tracking-widest text-[#b1b1b1] font-bold'>
-                <div className='flex items-center gap-1.5'>
-                  <Calendar
-                    size={13}
-                    className='text-[#B5BFA1]'
-                  />
-                  {blog.date}
-                </div>
-                <div className='flex items-center gap-1.5'>
-                  <User
-                    size={13}
-                    className='text-[#B5BFA1]'
-                  />
+              <div className='flex items-center gap-6 mb-4 text-[10px] uppercase font-bold tracking-widest text-gray-500'>
+                <div className='flex items-center gap-2 group-hover:text-white transition-colors'>
+                  <User size={12} className='text-[#B5BFA1]' />
                   {blog.author}
                 </div>
-                <div className='flex items-center gap-1.5'>
-                  <MessageSquare
-                    size={13}
-                    className='text-[#B5BFA1]'
-                  />
-                  {blog.comments}
+                <div className='flex items-center gap-2'>
+                  <MessageSquare size={12} className='text-[#B5BFA1]' />
+                  {blog.comments} Comments
                 </div>
               </div>
 
               {/* Title */}
               <Link href={`/blog/${blog.id}`}>
-                <h3 className='text-[22px] font-bold text-[#1a1a1a] mb-4 leading-[1.3] group-hover:text-[#B5BFA1] transition-colors duration-300'>
+                <h3 className='text-2xl font-bold text-white mb-4 leading-tight group-hover:text-[#B5BFA1] transition-colors duration-300'>
                   {blog.title}
                 </h3>
               </Link>
 
-              <p className='text-[#999999] text-[15px] leading-[1.8] mb-6 font-light'>
+              {/* Description */}
+              <p className='text-gray-400 text-[15px] leading-relaxed mb-8 font-medium line-clamp-2 group-hover:text-gray-300 transition-colors'>
                 {blog.description}
               </p>
 
-              {/* Read More Button */}
-              <div className='mt-auto'>
+              {/* Action Link */}
+              <div className='mt-auto pt-6 border-t border-white/5'>
                 <Link
                   href={`/blog/${blog.id}`}
-                  className='relative inline-block text-[12px] font-bold uppercase tracking-[2px] text-[#1a1a1a] hover:text-[#B5BFA1] transition-all duration-300'>
-                  Read More
-                  {/* Underline Fix: Added height as 1px or 2px */}
-                  <span className='block h-[0.5] w-full bg-[#B5BFA1] mt-1 transform scale-x-50 group-hover:scale-x-100 transition-transform duration-300 origin-left'></span>
+                  className='flex items-center justify-between group/link text-[11px] font-bold uppercase tracking-widest text-white/70 hover:text-[#B5BFA1] transition-colors'>
+                  <span>Read Full Article</span>
+                  <div className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center group-hover/link:bg-[#B5BFA1] group-hover/link:border-[#B5BFA1] transition-all duration-500">
+                    <ArrowUpRight size={14} className="group-hover/link:text-black transition-colors" />
+                  </div>
                 </Link>
               </div>
             </motion.div>

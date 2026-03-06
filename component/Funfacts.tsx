@@ -1,21 +1,22 @@
 "use client";
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
+import { motion, useInView, Variants } from "framer-motion";
 import { FiBriefcase, FiUser, FiCoffee, FiClock } from "react-icons/fi";
 
 const funFacts = [
-  { number: 750, label: "Project Complete", icon: <FiBriefcase /> },
-  { number: 568, label: "Happy Clients", icon: <FiUser /> },
-  { number: 10, label: "Years Experience", icon: <FiClock /> },
-  { number: 478, label: "Cups of Coffee", icon: <FiCoffee /> },
+  { number: 120, label: "Project Complete", icon: <FiBriefcase /> },
+  { number: 85, label: "Happy Clients", icon: <FiUser /> },
+  { number: 3, label: "Years Experience", icon: <FiClock /> },
+  { number: 250, label: "Cups of Coffee", icon: <FiCoffee /> },
 ];
 
 export default function FunFacts() {
   const [counts, setCounts] = useState(funFacts.map(() => 0));
-  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   useEffect(() => {
-    if (!isVisible) return; // Jab tak view mein na aaye, count shuru na ho
+    if (!isInView) return;
 
     const timers: number[] = [];
 
@@ -23,59 +24,79 @@ export default function FunFacts() {
       let start = 0;
       const end = fact.number;
       const duration = 2000;
-      const stepTime = Math.ceil(duration / end);
-
+      const totalFrames = 60;
+      const increment = end / totalFrames;
+      
+      let currentFrame = 0;
       const timer = window.setInterval(() => {
-        start += 1;
-        if (start > end) {
+        currentFrame++;
+        start += increment;
+        
+        if (currentFrame >= totalFrames) {
           start = end;
           clearInterval(timer);
         }
+
         setCounts((prev) => {
           const newCounts = [...prev];
-          newCounts[idx] = start;
+          newCounts[idx] = Math.floor(start);
           return newCounts;
         });
-      }, stepTime);
+      }, duration / totalFrames);
 
       timers.push(timer);
     });
 
     return () => timers.forEach((t) => clearInterval(t));
-  }, [isVisible]); // Trigger when section becomes visible
+  }, [isInView]);
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.8,
+        ease: [0.215, 0.61, 0.355, 1]
+      }
+    })
+  };
 
   return (
-    <section className='py-24 bg-[#F9F9F9] px-6 lg:px-16 overflow-hidden'>
-      <div className='max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12'>
+    <section ref={sectionRef} className='py-28 bg-white px-6 lg:px-16 overflow-hidden relative'>
+      {/* Subtle Sage Accent Decoration */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#B5BFA1]/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      
+      <div className='max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 relative z-10'>
         {funFacts.map((fact, index) => (
           <motion.div
             key={fact.label}
-            // Clyde Style Animation: Niche se upar slide hona aur fade hona
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            onViewportEnter={() => setIsVisible(true)} // Animation aur Counting sync karne ke liye
-            transition={{
-              duration: 0.8,
-              delay: index * 0.1, // Har item thora gap se aaye (Stagger effect)
-              ease: [0.45, 0.05, 0.55, 0.95], // Smooth cubic-bezier transition
-            }}
-            className='flex flex-row items-center justify-start gap-5'>
-            {/* Icon Animation: Scale up effect */}
+            custom={index}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={itemVariants}
+            className='flex flex-row items-center justify-start gap-6 group cursor-default'
+          >
+            {/* Minimalist Icon Box */}
             <motion.div
-              initial={{ scale: 0.5, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              className='shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#B5BFA1] flex items-center justify-center text-white text-2xl md:text-4xl shadow-sm'>
+              whileHover={{ y: -5 }}
+              className='shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-[#F9F9F9] border border-gray-100 flex items-center justify-center text-[#B5BFA1] text-2xl md:text-3xl transition-all duration-500 group-hover:bg-[#B5BFA1] group-hover:text-white group-hover:shadow-xl group-hover:shadow-[#B5BFA1]/20'
+            >
               {fact.icon}
             </motion.div>
 
-            {/* Text Side */}
-            <div className='flex flex-col items-start text-left'>
-              <h3 className='text-3xl md:text-4xl font-extrabold text-[#333333] leading-none'>
-                {counts[index]}
-              </h3>
-              <p className='text-[10px] md:text-xs font-bold uppercase tracking-[2px] text-[#B5BFA1] mt-2'>
+            {/* Content Side */}
+            <div className='flex flex-col items-start'>
+              <div className='flex items-baseline'>
+                <h3 className='text-4xl md:text-5xl font-black text-[#1a1a1a] leading-none tracking-tighter'>
+                  {counts[index]}
+                </h3>
+                <span className="text-[#B5BFA1] text-2xl font-bold ml-1">+</span>
+              </div>
+              
+              <p className='text-[10px] md:text-[11px] font-bold uppercase tracking-[3px] text-gray-400 mt-2 transition-colors duration-300 group-hover:text-[#B5BFA1]'>
                 {fact.label}
               </p>
             </div>
