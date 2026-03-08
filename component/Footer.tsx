@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Instagram,
   Twitter,
@@ -7,38 +8,50 @@ import {
   MapPin,
   Phone,
   Send,
+  Linkedin,
 } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className='bg-[#232931] pt-24 pb-12 px-6 lg:px-16 text-white'>
-      <div className='max-w-7xl mx-auto'>
+    <footer className='relative bg-[#0a0a0a] pt-24 pb-12 px-6 lg:px-16 text-white border-t border-white/5 overflow-hidden'>
+      {/* Professional Background Pattern */}
+      <div className="absolute inset-0 z-0 opacity-[0.03]" 
+           style={{ backgroundImage: `linear-gradient(#B5BFA1 1px, transparent 1px), linear-gradient(90deg, #B5BFA1 1px, transparent 1px)`, 
+           backgroundSize: '40px 40px' }} />
+      
+      {/* Subtle Radial Glow */}
+      <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#B5BFA1]/10 blur-[120px] rounded-full z-0" />
+
+      <div className='max-w-7xl mx-auto relative z-10'>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20'>
+          
           <div className='space-y-6'>
-            <h4 className='text-xl font-bold'>Lets talk about</h4>
-            <p className='text-gray-400 text-sm leading-relaxed'>
-              I am a passionate developer focused on creating modern and
+            <h4 className='text-xl font-bold tracking-tight'>
+              Let's <span className="text-[#B5BFA1]">Talk</span>
+            </h4>
+            <p className='text-gray-400 text-[13px] leading-relaxed'>
+              I am a passionate Full Stack Developer focused on creating modern and
               responsive web applications. Let's collaborate to bring your ideas
               to life with clean code and great design.
             </p>
-            <button className='px-6 py-3 bg-[#B5BFA1] text-white text-[12px] font-bold uppercase rounded-md hover:bg-white hover:text-[#B5BFA1] transition-all duration-300'>
-              Learn more
+            <button className='px-6 py-3 bg-[#B5BFA1] text-black text-[11px] font-bold uppercase tracking-widest rounded-sm hover:bg-white transition-all duration-300 shadow-lg shadow-[#B5BFA1]/5'>
+              Hire Me
             </button>
           </div>
 
           <div className='space-y-6'>
-            <h4 className='text-xl font-bold'>Links</h4>
+            <h4 className='text-xl font-bold tracking-tight text-[#B5BFA1]'>Links</h4>
             <ul className='space-y-4'>
               {["Home", "About", "Services", "Projects", "Contact"].map(
                 (link) => (
                   <li
                     key={link}
-                    className='flex items-center gap-2 group cursor-pointer'>
+                    className='flex items-center gap-2 group cursor-pointer w-fit'>
                     <ChevronRight
                       size={14}
-                      className='text-gray-500 group-hover:text-[#B5BFA1] transition-colors'
+                      className='text-[#B5BFA1]/40 group-hover:text-[#B5BFA1] transition-colors'
                     />
-                    <span className='text-gray-400 group-hover:text-white transition-colors'>
+                    <span className='text-gray-400 text-sm group-hover:text-white group-hover:translate-x-1 transition-all'>
                       {link}
                     </span>
                   </li>
@@ -48,23 +61,23 @@ const Footer = () => {
           </div>
 
           <div className='space-y-6'>
-            <h4 className='text-xl font-bold'>Services</h4>
+            <h4 className='text-xl font-bold tracking-tight text-[#B5BFA1]'>Services</h4>
             <ul className='space-y-4'>
               {[
                 "Web Design",
                 "Web Development",
-                "Business Strategy",
-                "Data Analysis",
-                "Graphic Design",
+                "UI/UX Design",
+                "Auth Integration",
+                "API Development",
               ].map((service) => (
                 <li
                   key={service}
-                  className='flex items-center gap-2 group cursor-pointer'>
+                  className='flex items-center gap-2 group cursor-pointer w-fit'>
                   <ChevronRight
                     size={14}
-                    className='text-gray-500 group-hover:text-[#B5BFA1] transition-colors'
+                    className='text-[#B5BFA1]/40 group-hover:text-[#B5BFA1] transition-colors'
                   />
-                  <span className='text-gray-400 group-hover:text-white transition-colors'>
+                  <span className='text-gray-400 text-sm group-hover:text-white group-hover:translate-x-1 transition-all'>
                     {service}
                   </span>
                 </li>
@@ -73,37 +86,34 @@ const Footer = () => {
           </div>
 
           <div className='space-y-6'>
-            <h4 className='text-xl font-bold'>Have a Questions?</h4>
+            <h4 className='text-xl font-bold tracking-tight'>Questions?</h4>
             <ul className='space-y-6 text-gray-400'>
-              <li className='flex gap-4'>
-                <MapPin
-                  size={20}
-                  className='text-white shrink-0'
-                />
-                <span className='text-sm'>Bahria Town, Lahore, Pakistan</span>
+              <li className='flex gap-4 group cursor-default'>
+                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-[#B5BFA1]/10 transition-colors">
+                    <MapPin size={18} className='text-[#B5BFA1]' />
+                </div>
+                <span className='text-[13px] self-center'>Bahria Town, Lahore, Pakistan</span>
               </li>
-              <li className='flex gap-4'>
-                <Phone
-                  size={20}
-                  className='text-white shrink-0'
-                />
-                <span className='text-sm'>+92 301 8950901</span>
+              <li className='flex gap-4 group cursor-default'>
+                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-[#B5BFA1]/10 transition-colors">
+                    <Phone size={18} className='text-[#B5BFA1]' />
+                </div>
+                <span className='text-[13px] self-center'>+92 301 8950901</span>
               </li>
-              <li className='flex gap-4'>
-                <Send
-                  size={20}
-                  className='text-white shrink-0'
-                />
-                <span className='text-sm'>ansaasghr710@gmail.com</span>
+              <li className='flex gap-4 group cursor-default'>
+                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-[#B5BFA1]/10 transition-colors">
+                    <Send size={18} className='text-[#B5BFA1]' />
+                </div>
+                <span className='text-[13px] self-center'>ansaasghr710@gmail.com</span>
               </li>
             </ul>
 
             <div className='flex gap-3 pt-4'>
-              {[Twitter, Facebook, Instagram].map((Icon, i) => (
+              {[Twitter, Facebook, Instagram, Linkedin].map((Icon, i) => (
                 <a
                   key={i}
                   href='#'
-                  className='w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#B5BFA1] transition-all duration-300'>
+                  className='w-10 h-10 rounded-sm bg-white/5 flex items-center justify-center hover:bg-[#B5BFA1] hover:text-black transition-all duration-300'>
                   <Icon size={18} />
                 </a>
               ))}
@@ -111,9 +121,12 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className='border-t border-gray-700 pt-8 text-center'>
-          <p className='text-gray-500 text-sm'>
-            Copyright ©2026 All rights reserved | This template is made with ❤️
+        <div className='border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4'>
+          <p className='text-gray-500 text-[11px] uppercase tracking-[2px] font-medium'>
+            Copyright ©2026 All rights reserved
+          </p>
+          <p className='text-gray-500 text-[11px] uppercase tracking-[2px] font-medium'>
+            Made with <span className="text-[#B5BFA1]">❤️</span> by Ansa
           </p>
         </div>
       </div>

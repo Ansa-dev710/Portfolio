@@ -23,18 +23,19 @@ export default function Hero() {
   return (
     <section
       id='home'
-      className='relative h-screen w-full flex items-center bg-[#f2f2f2] overflow-hidden'>
+      className='relative h-screen w-full flex items-center bg-[#0a0a0a] overflow-hidden'
+    >
       <div
-        className='absolute inset-0 bg-white z-10 hidden lg:block'
+        className='absolute inset-0 bg-[#111111] z-10 hidden lg:block'
         style={{ clipPath: "polygon(0 0, 42% 0, 32% 100%, 0% 100%)" }}
       />
 
-      <div className='absolute top-0 right-0 w-full lg:w-[68%] h-full z-0 bg-[#D3D3D3]'>
+      <div className='absolute top-0 right-0 w-full lg:w-[68%] h-full z-0 bg-black'>
         <AnimatePresence mode='wait'>
           <motion.div
             key={step}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ opacity: 0.5 }} 
             exit={{ opacity: 0 }}
             transition={{ duration: 1 }}
             className='relative w-full h-full'>
@@ -43,7 +44,7 @@ export default function Hero() {
               alt='Ansa Portfolio'
               fill
               priority
-              className='object-cover object-center lg:object-right'
+              className='object-cover object-center lg:object-right grayscale opacity-80' 
             />
           </motion.div>
         </AnimatePresence>
@@ -60,23 +61,24 @@ export default function Hero() {
               exit='exit'
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className='w-full lg:w-[45%]'>
-              <span className='uppercase tracking-[3px] text-[10px] font-bold text-[#B5BFA1] block mb-4'>
+              <span className='uppercase tracking-[4px] text-[11px] font-bold text-[#B5BFA1] block mb-6'>
                 Hello! I am Ansa
               </span>
-              <h1 className='text-[28px] md:text-[40px] lg:text-[48px] font-black text-[#1a1a1a] leading-[1.1] tracking-tighter'>
+              <h1 className='text-[32px] md:text-[45px] lg:text-[56px] font-extrabold text-white leading-[1.1] tracking-tighter'>
                 Creative <span className='text-[#B5BFA1]'>Web</span> <br />
                 Developer & Designer
               </h1>
 
-              <div className='flex gap-3 mt-8'>
+              <div className='flex gap-4 mt-10'>
+        
                 <a
-                  href='mailto:your-email@example.com'
-                  className='px-8 py-3.5 bg-[#B5BFA1] text-white text-[10px] font-bold uppercase tracking-widest rounded-sm shadow-md transition-all hover:bg-black'>
+                  href='mailto:ansaasgar710@gmail.com?subject=Hiring Inquiry&body=Hi Ansa, I would like to discuss a project with you.'
+                  className='px-10 py-4 bg-[#B5BFA1] text-black text-[11px] font-bold uppercase tracking-[2px] rounded-sm transition-all hover:bg-white hover:scale-105 inline-block text-center'>
                   Hire me
                 </a>
                 <a
                   href='/cv.pdf'
-                  className='px-8 py-3.5 border border-[#e2e2e2] bg-white text-gray-400 text-[10px] font-bold uppercase tracking-widest rounded-sm hover:border-[#B5BFA1]'>
+                  className='px-10 py-4 border border-[#333] bg-transparent text-[#999] text-[11px] font-bold uppercase tracking-[2px] rounded-sm hover:border-[#B5BFA1] hover:text-white transition-all inline-block text-center'>
                   Download CV
                 </a>
               </div>
@@ -90,20 +92,23 @@ export default function Hero() {
               exit='exit'
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className='w-full lg:w-[45%]'>
-              <span className='uppercase tracking-[3px] text-[10px] font-bold text-[#B5BFA1] block mb-4'>
+              <span className='uppercase tracking-[4px] text-[11px] font-bold text-[#B5BFA1] block mb-6'>
                 We Design & Build Brands
               </span>
 
-              <h1 className='text-[28px] md:text-[40px] lg:text-[48px] font-black text-[#1a1a1a] leading-[1.1] tracking-tighter'>
+              <h1 className='text-[32px] md:text-[45px] lg:text-[56px] font-extrabold text-white leading-[1.1] tracking-tighter'>
                 Hi, I am <span className='text-[#B5BFA1]'>Ansa</span> This is my
-                favorite work <br />
+                favorite work
               </h1>
 
-              <div className='flex gap-3 mt-8'>
-                <button className='px-8 py-3.5 bg-[#B5BFA1] text-white text-[10px] font-bold uppercase tracking-widest rounded-sm shadow-md transition-all hover:bg-black'>
+              <div className='flex gap-4 mt-10'>
+              
+                <a 
+                  href='mailto:ansaasgar710@gmail.com?subject=Hiring Inquiry'
+                  className='px-10 py-4 bg-[#B5BFA1] text-black text-[11px] font-bold uppercase tracking-[2px] rounded-sm transition-all hover:bg-white inline-block text-center'>
                   Hire me
-                </button>
-                <button className='px-8 py-3.5 border border-[#e2e2e2] bg-white text-gray-400 text-[10px] font-bold uppercase tracking-widest rounded-sm'>
+                </a>
+                <button className='px-10 py-4 border border-[#333] bg-transparent text-[#999] text-[11px] font-bold uppercase tracking-[2px] rounded-sm hover:border-[#B5BFA1] hover:text-white'>
                   Download CV
                 </button>
               </div>
