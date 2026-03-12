@@ -89,7 +89,7 @@ export default function Services() {
         </div>
       </section>
 
-      {/* --- Updated CTA Section with Description --- */}
+      {/* --- Updated CTA Section without stars --- */}
       <section className='py-20 bg-[#B5BFA1] px-6 lg:px-16 relative overflow-hidden'>
         <div className='max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12'>
           
@@ -98,7 +98,9 @@ export default function Services() {
               Have a project on your mind?
             </h2>
             <p className='text-black/80 text-lg leading-relaxed max-w-2xl font-medium'>
-              Whether it's a complex **Task Management System** or a high-performance **Full Stack Application**, I bring my expertise from **Heapware** to deliver scalable and elegant solutions. Let's transform your vision into a digital reality with clean code and modern aesthetics.
+              Whether it's a complex Task Management System or a high-performance Full Stack Application, 
+              I bring my expertise from Heapware to deliver scalable and elegant solutions. 
+              Let's transform your vision into a digital reality with clean code and modern aesthetics.
             </p>
           </div>
 

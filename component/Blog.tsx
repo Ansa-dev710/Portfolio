@@ -15,8 +15,7 @@ export default function Blog() {
       author: "Ansa",
       comments: 3,
       title: "Mastering Modern UI/UX Design Trends",
-      description:
-        "Explore how minimalist aesthetics and fluid animations are redefining user engagement in the 2026 digital landscape.",
+      description: "Explore how minimalist aesthetics and fluid animations are redefining user engagement in the 2026 digital landscape.",
     },
     {
       id: 2,
@@ -26,8 +25,7 @@ export default function Blog() {
       author: "Ansa",
       comments: 5,
       title: "The Power of Server-Side Rendering",
-      description:
-        "Deep dive into Next.js and why SSR is crucial for building scalable, high-performance web applications today.",
+      description: "Deep dive into Next.js and why SSR is crucial for building scalable, high-performance web applications today.",
     },
     {
       id: 3,
@@ -37,19 +35,16 @@ export default function Blog() {
       author: "Ansa",
       comments: 2,
       title: "Scaling SEO with Technical Precision",
-      description:
-        "Beyond keywords: how core web vitals and structured data can significantly boost your organic search rankings.",
+      description: "Beyond keywords: how core web vitals and structured data can significantly boost your organic search rankings.",
     },
   ];
 
   return (
     <section id='blog' className='py-32 bg-[#0a0a0a] px-6 lg:px-16 relative overflow-hidden'>
-      {/* Background Subtle Glow */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#B5BFA1]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className='max-w-7xl mx-auto relative z-10'>
         
-        {/* Section Header */}
         <div className='flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6'>
           <div className="max-w-2xl">
             <motion.span
@@ -68,11 +63,13 @@ export default function Blog() {
               Latest <span className="text-[#B5BFA1] italic font-light">Stories</span>
             </motion.h2>
           </div>
+          
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             className="hidden md:block"
           >
+             {/* Yeh Link '/blog' page par le kar jayega */}
              <Link href="/blog" className="text-[11px] font-bold uppercase tracking-widest text-white/50 border-b border-white/10 pb-1 hover:text-[#B5BFA1] hover:border-[#B5BFA1] transition-all duration-300">
                 View All Posts
              </Link>
@@ -87,9 +84,8 @@ export default function Blog() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: index * 0.15 }}
-              className='flex flex-col group cursor-pointer'>
+              className='flex flex-col group'>
               
-              {/* Image Container with Dark Overlay */}
               <div className='relative aspect-[16/10] w-full overflow-hidden mb-8 rounded-2xl bg-[#111111] border border-white/5'>
                 <Image
                   src={blog.image}
@@ -99,14 +95,12 @@ export default function Blog() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent opacity-60" />
                 
-                {/* Dark Date Badge */}
                 <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md border border-white/10 px-4 py-2 rounded-xl text-center">
                   <span className="block text-sm font-black text-white leading-none">{blog.date}</span>
                   <span className="block text-[10px] text-[#B5BFA1] font-bold uppercase mt-1">{blog.year}</span>
                 </div>
               </div>
 
-              {/* Meta Info */}
               <div className='flex items-center gap-6 mb-4 text-[10px] uppercase font-bold tracking-widest text-gray-500'>
                 <div className='flex items-center gap-2 group-hover:text-white transition-colors'>
                   <User size={12} className='text-[#B5BFA1]' />
@@ -118,19 +112,16 @@ export default function Blog() {
                 </div>
               </div>
 
-              {/* Title */}
               <Link href={`/blog/${blog.id}`}>
                 <h3 className='text-2xl font-bold text-white mb-4 leading-tight group-hover:text-[#B5BFA1] transition-colors duration-300'>
                   {blog.title}
                 </h3>
               </Link>
 
-              {/* Description */}
-              <p className='text-gray-400 text-[15px] leading-relaxed mb-8 font-medium line-clamp-2 group-hover:text-gray-300 transition-colors'>
+              <p className='text-gray-400 text-[15px] leading-relaxed mb-8 font-medium line-clamp-2'>
                 {blog.description}
               </p>
 
-              {/* Action Link */}
               <div className='mt-auto pt-6 border-t border-white/5'>
                 <Link
                   href={`/blog/${blog.id}`}

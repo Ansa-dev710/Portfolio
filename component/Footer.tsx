@@ -126,7 +126,7 @@ const Footer = () => {
             Copyright ©2026 All rights reserved
           </p>
           <p className='text-gray-500 text-[11px] uppercase tracking-[2px] font-medium'>
-            Made with <span className="text-[#B5BFA1]">❤️</span> by Ansa
+            Made  <span className="text-[#B5BFA1]">❤️</span> by Ansa
           </p>
         </div>
       </div>
