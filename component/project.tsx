@@ -14,8 +14,8 @@ export default function ProjectsAndTestimonials() {
   
   const projectItems = [
     { title: "Next.js Weather App", category: "Web Development", image: "/work-1.jpg" },
-    { title: "Admin Dashboard", category: "Full Stack", image: "/work-2.jpg" },
-    { title: "Portfolio System", category: "UI/UX Design", image: "/work-3.jpg" },
+    { title: "Admin Dashboard", category: "Full Stack", image: "/work2.jpg" },
+    { title: "Portfolio System", category: "UI/UX Design", image: "/work3.jpg" },
     { title: "Heapware CRM", category: "Management System", image: "/work-4.jpg" },
     { title: "E-Commerce Interface", category: "Web Design", image: "/work-5.jpg" },
     { title: "Auth Systems", category: "Security/Middleware", image: "/work-6.jpg" },
@@ -66,7 +66,7 @@ export default function ProjectsAndTestimonials() {
   return (
     <div className="bg-[#0a0a0a]">
       
-      {/* --- 1. PROJECTS SECTION (Dark Background) --- */}
+    
       <section id='portfolio' className='py-24 bg-[#0a0a0a] px-6 lg:px-16'>
         <div className='max-w-6xl mx-auto'>
           
@@ -94,7 +94,7 @@ export default function ProjectsAndTestimonials() {
                 whileInView='visible'
                 viewport={{ once: true }}
                 custom={index % 4}
-                className='group relative overflow-hidden aspect-[4/5] cursor-pointer bg-[#111] border border-white/5 rounded-xl'>
+                className='group relative overflow-hidden aspect-4/5 cursor-pointer bg-[#111] border border-white/5 rounded-xl'>
                 
                 <Image
                   src={item.image}
@@ -103,7 +103,7 @@ export default function ProjectsAndTestimonials() {
                   className='object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110 opacity-40 group-hover:opacity-100'
                 />
 
-                {/* Sage Green Hover Overlay */}
+              
                 <div className='absolute inset-0 bg-[#B5BFA1] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out flex flex-col items-center justify-center text-center p-5'>
                   <div className='w-10 h-10 bg-[#1a1a1a] rounded-full flex items-center justify-center mb-4 shadow-lg'>
                     <Plus className='text-[#B5BFA1]' size={20} />
@@ -121,7 +121,7 @@ export default function ProjectsAndTestimonials() {
         </div>
       </section>
 
-      {/* --- 2. TESTIMONIALS SECTION (Sage Green Background) --- */}
+
       <section id='testimonials' className='py-24 bg-[#B5BFA1] px-6 lg:px-16 overflow-hidden relative'>
         <div className='max-w-6xl mx-auto relative z-10'>
           
@@ -165,7 +165,7 @@ export default function ProjectsAndTestimonials() {
                   custom={i}
                   className='bg-[#1a1a1a] p-7 md:p-8 h-full flex flex-col shadow-lg relative rounded-lg group hover:bg-[#B5BFA1] transition-all duration-500 cursor-grab active:cursor-grabbing border border-white/5'>
                   
-                  {/* Quote Icon */}
+                  
                   <div className='absolute -top-4 left-8 w-10 h-10 bg-[#B5BFA1] group-hover:bg-[#1a1a1a] flex items-center justify-center shadow-md z-10 rounded-md transition-colors duration-300'>
                     <Quote
                       size={16}
