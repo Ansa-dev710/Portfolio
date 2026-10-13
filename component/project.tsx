@@ -22,7 +22,7 @@ export default function ProjectsAndTestimonials() {
     { title: "Auth Systems", category: "Security/Middleware", image: "/work6.jpg" },
     { title: "SaaS Landing Page", category: "Branding", image: "/work7.jpg" },
     { title: "API Integration", category: "Backend", image: "/work8.jpg" },
-    { title: "Social Media App", category: "Mobile UI", image: "/work9.jpg" }, 
+    { title: "Social Media App", category: "Mobile UI", image: "/work9.jpgcd " }, 
   ];
 
   const testimonials = [
@@ -87,7 +87,7 @@ export default function ProjectsAndTestimonials() {
             </h2>
           </motion.div>
 
-          {/* Grid optimized for 3 columns on desktop */}
+          
           <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
             {projectItems.map((item, index) => (
               <motion.div
@@ -99,7 +99,7 @@ export default function ProjectsAndTestimonials() {
                 custom={index % 3}
                 className='group relative overflow-hidden aspect-[16/10] cursor-pointer bg-[#111] border border-white/5 rounded-xl'>
                 
-                {/* Fixed: Full color images */}
+              
                 <Image
                   src={item.image}
                   alt={item.title}
@@ -107,7 +107,7 @@ export default function ProjectsAndTestimonials() {
                   className='object-cover transition-all duration-700 group-hover:scale-110 opacity-100'
                 />
 
-                {/* Hover Overlay with bg-[#B5BFA1] */}
+            
                 <div className='absolute inset-0 bg-[#B5BFA1] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out flex flex-col items-center justify-center text-center p-5 z-20'>
                   <div className='w-10 h-10 bg-[#1a1a1a] rounded-full flex items-center justify-center mb-4 shadow-lg'>
                     <Plus className='text-[#B5BFA1]' size={20} />
@@ -126,7 +126,7 @@ export default function ProjectsAndTestimonials() {
       </section>
 
 
-      {/* --- Testimonials Section --- */}
+    
       <section id='testimonials' className='py-24 bg-[#B5BFA1] px-6 lg:px-16 overflow-hidden relative'>
         <div className='max-w-6xl mx-auto relative z-10'>
           

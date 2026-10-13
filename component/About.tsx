@@ -7,7 +7,7 @@ export default function About() {
   const personalInfo = [
     { label: "Name", value: "Ansa Asghar" },
     { label: "Birth", value: "January 03, 2004" },
-    { label: "Address", value: "Bahria Town, Lahore" },
+    { label: "Address", value: "Bharia Town Lahore " },
     { label: "Email", value: "ansasgar710@gmail.com" },
     { label: "Phone", value: "+92 301 8950901" },
   ];
@@ -24,13 +24,13 @@ export default function About() {
       id='about'
       className='relative py-32 bg-[#0a0a0a] px-6 lg:px-16 overflow-hidden'
     >
-      {/* Subtle Background Glow */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#B5BFA1]/5 rounded-full blur-[120px] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+      
+      <div className="absolute top-0 left-0 w-[125] h-[125] bg-[#B5BFA1]/5 rounded-full blur-[120px] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
       <div className='max-w-7xl mx-auto'>
         <div className='grid lg:grid-cols-2 gap-20 items-center'>
           
-          {/* Left Side: Image Section */}
+      
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -38,9 +38,9 @@ export default function About() {
             viewport={{ once: true, margin: "-100px" }}
             className='relative'
           >
-            {/* Sage Green Accent Frame */}
+      
             <div className='absolute -bottom-6 -right-6 w-full h-full border-2 border-[#B5BFA1]/30 -z-10 hidden md:block rounded-2xl'></div>
-            <div className='relative aspect-[3/4] w-full max-w-md mx-auto shadow-2xl overflow-hidden rounded-2xl border-4 border-white/5'>
+            <div className='relative aspect-3/4 w-full max-w-md mx-auto shadow-2xl overflow-hidden rounded-2xl border-4 border-white/5'>
               <Image
                 src='/profile.jpg'
                 alt='Ansa Asghar'
@@ -51,7 +51,7 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Right Side: Content Section */}
+      
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -67,7 +67,7 @@ export default function About() {
               I am a specialized <span className='text-white font-semibold'>Full Stack Web Developer</span> with professional experience at <span className='text-white font-semibold'>Heapware</span>. I focus on creating <span className='text-[#B5BFA1] font-bold'>scalable architectures</span> and smooth UI/UX using modern technologies like Next.js and Tailwind CSS.
             </p>
 
-            {/* Personal Info - Highlighted List */}
+        
             <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mb-12'>
               {personalInfo.map((info, idx) => (
                 <div key={idx} className='flex flex-col space-y-1'>
@@ -81,7 +81,7 @@ export default function About() {
               ))}
             </div>
 
-            {/* Interests Section */}
+        
             <div className='mb-12'>
               <h3 className='text-[10px] font-bold text-white uppercase tracking-[0.3em] mb-6 border-l-2 border-[#B5BFA1] pl-4'>
                 Personal Interests
@@ -104,7 +104,7 @@ export default function About() {
               </div>
             </div>
 
-            {/* Download Button */}
+          
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <a
                 href='/cv.pdf'
